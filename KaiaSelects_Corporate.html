@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaia Selects · Corporate Gifting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,600;1,200;1,300;1,600&family=Jost:wght@100;200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a96e;
+    --gold-light: #f0cc7a;
+    --gold-pale: #f0e8d8;
+    --dark: #080806;
+    --dark-2: #0e0e0b;
+    --dark-3: #161810;
+    --dark-4: #1c2018;
+    --muted: #9a9a82;
+    --border: #2a2e22;
+    --cream: #f4efe4;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: #f0e8d8;
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    overflow-x: hidden;
+  }
+
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9999; mix-blend-mode: overlay;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 24px 52px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: linear-gradient(to bottom, rgba(8,8,6,0.95), transparent);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; font-style: italic; font-weight: 300;
+    color: var(--gold); letter-spacing: 0.06em;
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .nav-sub {
+    font-size: 8px; letter-spacing: 0.5em;
+    color: #b0b098; text-transform: uppercase;
+  }
+
+  .nav-contact {
+    font-size: 9px; letter-spacing: 0.4em;
+    color: #b0b098; text-decoration: none;
+    text-transform: uppercase; transition: color 0.3s;
+  }
+  .nav-contact:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 140px 52px 100px;
+    position: relative; overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 50% 60% at 30% 50%, rgba(92,26,46,0.1) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 60% at 70% 50%, rgba(42,64,48,0.08) 0%, transparent 60%);
+  }
+
+  .hero-inner {
+    max-width: 1100px; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+    position: relative; z-index: 1;
+  }
+
+  .hero-text {}
+
+  .hero-eyebrow {
+    font-size: 8px; letter-spacing: 0.7em;
+    color: #b0b098; text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before { content: ''; width: 20px; height: 1px; background: var(--gold); opacity: 0.5; }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 5vw, 68px);
+    font-weight: 200; line-height: 0.92;
+    color: #f0e8d8; margin-bottom: 28px;
+  }
+  .hero-title em { display: block; font-style: italic; color: var(--gold); }
+
+  .hero-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; font-style: italic;
+    color: #b0b098; line-height: 1.7;
+    margin-bottom: 40px; max-width: 420px;
+  }
+
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 16px;
+    font-size: 9px; letter-spacing: 0.5em;
+    text-transform: uppercase; color: var(--gold);
+    text-decoration: none; transition: gap 0.4s;
+  }
+  .hero-cta:hover { gap: 24px; }
+  .cta-l { width: 40px; height: 1px; background: var(--gold); transition: width 0.4s; }
+  .hero-cta:hover .cta-l { width: 56px; }
+  .cta-a { width: 7px; height: 7px; border-right: 1px solid var(--gold); border-top: 1px solid var(--gold); transform: rotate(45deg); margin-left: -1px; }
+
+  /* Hero visual – abstract gift boxes */
+  .hero-visual {
+    display: flex; flex-direction: column; gap: 2px;
+  }
+
+  .stat-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  }
+
+  .stat-box {
+    padding: 28px 24px;
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    position: relative; overflow: hidden;
+  }
+
+  .stat-box::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 1px; background: var(--gold); opacity: 0.4;
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px; font-weight: 200;
+    color: var(--gold-light); line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 9px; letter-spacing: 0.3em;
+    color: #b0b098; text-transform: uppercase;
+    line-height: 1.5;
+  }
+
+  .stat-wide {
+    padding: 24px;
+    background: var(--dark-4);
+    border: 1px solid var(--border);
+    display: flex; align-items: center;
+    justify-content: space-between;
+  }
+
+  .stat-wide-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px; font-style: italic;
+    color: #b0b098; max-width: 320px; line-height: 1.6;
+  }
+
+  /* PACKAGES */
+  .packages {
+    padding: 100px 52px;
+    max-width: 1100px; margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center; margin-bottom: 64px;
+  }
+
+  .section-eyebrow {
+    font-size: 8px; letter-spacing: 0.6em;
+    color: #b0b098; text-transform: uppercase;
+    margin-bottom: 16px; display: block;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 200; color: #f0e8d8; line-height: 1.1;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .pkg-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    margin-bottom: 2px;
+  }
+
+  .pkg {
+    padding: 48px 36px;
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+    display: flex; flex-direction: column;
+    gap: 0; position: relative;
+    transition: border-color 0.4s;
+  }
+
+  .pkg:hover { border-color: rgba(201,169,110,0.3); }
+
+  .pkg.featured {
+    background: var(--dark-4);
+    border-color: rgba(201,169,110,0.25);
+  }
+
+  .pkg-badge {
+    position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+    background: var(--gold); color: var(--dark);
+    font-size: 7px; letter-spacing: 0.4em;
+    text-transform: uppercase; padding: 4px 14px;
+    white-space: nowrap;
+  }
+
+  .pkg-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px; font-weight: 200;
+    color: rgba(201,169,110,0.06); line-height: 1;
+    margin-bottom: -12px;
+  }
+
+  .pkg-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 300; font-style: italic;
+    color: #f0e8d8; margin-bottom: 4px;
+  }
+
+  .pkg-boxes {
+    font-size: 9px; letter-spacing: 0.4em;
+    color: #b0b098; text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .pkg-divider {
+    width: 100%; height: 0.5px;
+    background: var(--border); margin-bottom: 24px;
+  }
+
+  .pkg-items {
+    list-style: none; display: flex;
+    flex-direction: column; gap: 10px;
+    margin-bottom: 32px; flex: 1;
+  }
+
+  .pkg-items li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 11px; color: rgba(240,232,216,0.95); line-height: 1.5;
+  }
+
+  .pkg-items li::before {
+    content: ''; width: 16px; height: 0.5px;
+    background: var(--gold); opacity: 0.4;
+    flex-shrink: 0; margin-top: 8px;
+  }
+
+  .pkg-price {
+    display: flex; align-items: baseline; gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .pkg-from { font-size: 9px; letter-spacing: 0.3em; color: #b0b098; text-transform: uppercase; }
+  .pkg-amount { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 200; color: var(--gold-light); line-height: 1; }
+  .pkg-unit { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: #b0b098; }
+
+  .pkg-note { font-size: 10px; color: #b0b098; margin-bottom: 28px; }
+
+  .pkg-cta {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 9px; letter-spacing: 0.45em;
+    text-transform: uppercase; color: var(--gold);
+    text-decoration: none; cursor: pointer;
+    background: none; border: none;
+    font-family: 'Jost', sans-serif; font-weight: 200;
+    transition: gap 0.4s;
+  }
+  .pkg-cta:hover { gap: 18px; }
+  .pkg-cta-l { width: 28px; height: 1px; background: var(--gold); transition: width 0.4s; }
+  .pkg-cta:hover .pkg-cta-l { width: 40px; }
+  .pkg-cta-a { width: 6px; height: 6px; border-right: 1px solid var(--gold); border-top: 1px solid var(--gold); transform: rotate(45deg); margin-left: -1px; }
+
+  /* FULL WIDTH CUSTOM */
+  .pkg-custom {
+    padding: 40px 48px;
+    background: var(--dark-4);
+    border: 1px solid rgba(201,169,110,0.2);
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .pkg-custom-text h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 300; font-style: italic;
+    color: #f0e8d8; margin-bottom: 8px;
+  }
+
+  .pkg-custom-text p {
+    font-size: 12px; color: #b0b098; line-height: 1.7;
+    max-width: 480px;
+  }
+
+  /* PROCESS */
+  .process {
+    padding: 80px 52px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .process-inner {
+    max-width: 1100px; margin: 0 auto;
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0; margin-top: 48px;
+  }
+
+  .process-step {
+    padding: 36px 28px;
+    border-left: 1px solid var(--border);
+    position: relative;
+  }
+
+  .process-step:first-child { border-left: none; }
+
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px; font-weight: 200;
+    color: rgba(201,169,110,0.08); line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 300; font-style: italic;
+    color: #f0e8d8; margin-bottom: 10px;
+  }
+
+  .step-body {
+    font-size: 11px; color: #b0b098; line-height: 1.7;
+  }
+
+  /* WHY */
+  .why {
+    padding: 100px 52px;
+    max-width: 1100px; margin: 0 auto;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin-top: 48px;
+  }
+
+  .why-item {
+    padding: 36px 28px;
+    background: var(--dark-3);
+    border: 1px solid var(--border);
+  }
+
+  .why-icon {
+    width: 32px; height: 32px;
+    border: 1px solid rgba(201,169,110,0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .why-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 300; font-style: italic;
+    color: #f0e8d8; margin-bottom: 10px;
+  }
+
+  .why-body {
+    font-size: 11px; color: #b0b098; line-height: 1.7;
+  }
+
+  /* CONTACT FORM */
+  .contact {
+    padding: 100px 52px;
+    border-top: 1px solid var(--border);
+    position: relative; overflow: hidden;
+  }
+
+  .contact::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(201,169,110,0.03) 0%, transparent 70%);
+  }
+
+  .contact-inner {
+    max-width: 680px; margin: 0 auto;
+    text-align: center; position: relative; z-index: 1;
+  }
+
+  .contact-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 200; line-height: 0.92;
+    color: #f0e8d8; margin-bottom: 16px;
+  }
+  .contact-title em { font-style: italic; color: var(--gold); }
+
+  .contact-rule { width: 36px; height: 1px; background: var(--gold); margin: 0 auto 24px; opacity: 0.5; }
+
+  .contact-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; font-style: italic;
+    color: #b0b098; line-height: 1.7; margin-bottom: 48px;
+  }
+
+  .form-field {
+    width: 100%; padding: 16px 0;
+    background: transparent; border: none;
+    border-bottom: 1px solid var(--border);
+    color: #f0e8d8;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; font-style: italic; font-weight: 300;
+    outline: none; transition: border-color 0.4s;
+    text-align: center; letter-spacing: 0.04em;
+    margin-bottom: 4px;
+  }
+  .form-field::placeholder { color: #b0b098; font-style: italic; }
+  .form-field:focus { border-color: var(--gold); }
+
+  select.form-field {
+    cursor: pointer; appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+  }
+  select.form-field option { background: var(--dark-2); color: #f0e8d8; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .btn-send {
+    display: inline-flex; align-items: center; gap: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-style: italic; font-weight: 300;
+    color: var(--gold); background: none; border: none;
+    cursor: pointer; transition: gap 0.4s; letter-spacing: 0.04em;
+    margin-top: 40px;
+  }
+  .btn-send:hover { gap: 28px; }
+  .btn-l { width: 44px; height: 1px; background: var(--gold); transition: width 0.4s; }
+  .btn-send:hover .btn-l { width: 60px; }
+
+  .form-note { font-size: 9px; letter-spacing: 0.2em; color: #b0b098; opacity: 0.45; margin-top: 20px; }
+
+  .success-msg { display: none; text-align: center; }
+  .success-msg.show { display: block; }
+  .success-head { font-family:'Cormorant Garamond',serif; font-size:40px; font-weight:200; font-style:italic; color:var(--gold-pale); margin-bottom:12px; }
+  .success-body { font-family:'Cormorant Garamond',serif; font-size:16px; font-style:italic; color:var(--muted); line-height:1.7; }
+
+  /* FOOTER */
+  footer {
+    padding: 28px 52px;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .f-brand { font-family:'Cormorant Garamond',serif; font-size:14px; font-style:italic; color:var(--muted); }
+  .f-links { display:flex; gap:24px; }
+  .f-links a { font-size:8px; letter-spacing:0.4em; color:var(--muted); text-decoration:none; text-transform:uppercase; opacity:0.5; transition:opacity 0.3s; }
+  .f-links a:hover { opacity:1; }
+
+  /* Reveal */
+  .rev { opacity:0; transform:translateY(32px); transition:opacity 0.9s ease,transform 0.9s ease; }
+  .rev.in { opacity:1; transform:translateY(0); }
+  .d1{transition-delay:0.1s} .d2{transition-delay:0.2s} .d3{transition-delay:0.3s} .d4{transition-delay:0.4s} .d5{transition-delay:0.5s}
+
+  @media(max-width:900px){
+    nav{padding:16px 24px;}
+    .hero{padding:100px 24px 60px;}
+    .hero-inner{grid-template-columns:1fr;}
+    .packages{padding:60px 24px;}
+    .pkg-grid{grid-template-columns:1fr;}
+    .process-steps{grid-template-columns:1fr 1fr;}
+    .why-grid{grid-template-columns:1fr;}
+    .contact{padding:80px 24px;}
+    .form-row{grid-template-columns:1fr;}
+    footer{flex-direction:column;gap:16px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div>
+    <div class="nav-logo">
+      <svg width="22" height="22" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="24" r="22" fill="none" stroke="#c9a96e" stroke-width="1"/>
+        <circle cx="24" cy="24" r="5" fill="#c9a96e" opacity="0.95"/>
+        <ellipse cx="24" cy="10" rx="2.8" ry="7" fill="#c9a96e" opacity="0.5"/>
+        <ellipse cx="24" cy="38" rx="2.8" ry="7" fill="#c9a96e" opacity="0.5"/>
+        <ellipse cx="10" cy="24" rx="7" ry="2.8" fill="#c9a96e" opacity="0.5"/>
+        <ellipse cx="38" cy="24" rx="7" ry="2.8" fill="#c9a96e" opacity="0.5"/>
+        <ellipse cx="14" cy="14" rx="2.5" ry="6" fill="#c9a96e" opacity="0.3" transform="rotate(-45 14 14)"/>
+        <ellipse cx="34" cy="34" rx="2.5" ry="6" fill="#c9a96e" opacity="0.3" transform="rotate(-45 34 34)"/>
+        <ellipse cx="34" cy="14" rx="2.5" ry="6" fill="#c9a96e" opacity="0.3" transform="rotate(45 34 14)"/>
+        <ellipse cx="14" cy="34" rx="2.5" ry="6" fill="#c9a96e" opacity="0.3" transform="rotate(45 14 34)"/>
+        <circle cx="24" cy="24" r="2.5" fill="#080806"/>
+        <circle cx="24" cy="24" r="1.2" fill="#c9a96e" opacity="0.7"/>
+      </svg>
+      Kaia Selects
+    </div>
+    <div class="nav-sub" style="margin-top:2px;">Corporate Gifting</div>
+  </div>
+  <a class="nav-contact" href="#contact">Angebot anfragen</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Für Unternehmen</p>
+      <h1 class="hero-title">
+        Geschenke die<br>
+        <em>man nicht vergisst</em>
+      </h1>
+      <p class="hero-body">
+        Kein Standardpräsent. Kein Firmenlogo auf Billigware. Kuratierte Premium-Boxen aus Südafrika – für Kunden und Teams die es wert sind, beeindruckt zu werden.
+      </p>
+      <a class="hero-cta" href="#packages">
+        Pakete entdecken
+        <span style="display:flex;align-items:center;">
+          <span class="cta-l"></span>
+          <span class="cta-a"></span>
+        </span>
+      </a>
+    </div>
+
+    <div class="hero-visual rev">
+      <div class="stat-row">
+        <div class="stat-box">
+          <div class="stat-num">89€</div>
+          <div class="stat-label">Reserve Box<br>ab 10 Stück</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">59€</div>
+          <div class="stat-label">Botanica Box<br>alkoholfrei</div>
+        </div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-box">
+          <div class="stat-num">0</div>
+          <div class="stat-label">Abo<br>Keine Bindung</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">14×</div>
+          <div class="stat-label">Hände pro<br>Wonki Ware Tasse</div>
+        </div>
+      </div>
+      <div class="stat-wide">
+        <p class="stat-wide-text">
+          „Ein Geschenk das eine Geschichte erzählt, bleibt in Erinnerung. Kaia Selects liefert genau das."
+        </p>
+        <svg width="36" height="36" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="5" fill="#c9a96e" opacity="0.9"/>
+          <ellipse cx="24" cy="10" rx="2.8" ry="7" fill="#c9a96e" opacity="0.5"/>
+          <ellipse cx="24" cy="38" rx="2.8" ry="7" fill="#c9a96e" opacity="0.5"/>
+          <ellipse cx="10" cy="24" rx="7" ry="2.8" fill="#c9a96e" opacity="0.5"/>
+          <ellipse cx="38" cy="24" rx="7" ry="2.8" fill="#c9a96e" opacity="0.5"/>
+          <ellipse cx="14" cy="14" rx="2.5" ry="6" fill="#c9a96e" opacity="0.3" transform="rotate(-45 14 14)"/>
+          <ellipse cx="34" cy="34" rx="2.5" ry="6" fill="#c9a96e" opacity="0.3" transform="rotate(-45 34 34)"/>
+          <ellipse cx="34" cy="14" rx="2.5" ry="6" fill="#c9a96e" opacity="0.3" transform="rotate(45 34 14)"/>
+          <ellipse cx="14" cy="34" rx="2.5" ry="6" fill="#c9a96e" opacity="0.3" transform="rotate(45 14 34)"/>
+          <circle cx="24" cy="24" r="2.5" fill="#080806"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="packages" id="packages">
+  <div class="section-header rev">
+    <span class="section-eyebrow">Pakete & Preise</span>
+    <h2 class="section-title">Wähle dein<br><em>Paket</em></h2>
+  </div>
+
+  <div class="pkg-grid">
+
+    <!-- STARTER -->
+    <div class="pkg rev d1">
+      <div class="pkg-num">01</div>
+      <div class="pkg-name">Starter</div>
+      <div class="pkg-boxes">10–24 Boxen</div>
+      <div class="pkg-divider"></div>
+      <ul class="pkg-items">
+        <li>Reserve oder Botanica Box wählbar</li>
+        <li>Persönliche Story-Karte inkl.</li>
+        <li>Firmenname auf Story-Karte</li>
+        <li>3D-Flaschenstopper mit Kaia-Logo</li>
+        <li>Lieferung einzeln adressiert möglich</li>
+      </ul>
+      <div class="pkg-price">
+        <span class="pkg-from">Ab</span>
+        <span class="pkg-amount">89</span>
+        <span class="pkg-unit">€ / Box</span>
+      </div>
+      <div class="pkg-note">Reserve · Botanica ab 59€/Box</div>
+      <a class="pkg-cta" href="#contact">
+        Anfragen
+        <span style="display:flex;align-items:center;">
+          <span class="pkg-cta-l"></span>
+          <span class="pkg-cta-a"></span>
+        </span>
+      </a>
+    </div>
+
+    <!-- PREMIUM – featured -->
+    <div class="pkg featured rev d2">
+      <div class="pkg-badge">Beliebteste Wahl</div>
+      <div class="pkg-num">02</div>
+      <div class="pkg-name">Premium</div>
+      <div class="pkg-boxes">25–49 Boxen</div>
+      <div class="pkg-divider"></div>
+      <ul class="pkg-items">
+        <li>Reserve + Botanica kombinierbar</li>
+        <li>Individuelles Firmenlogo auf Story-Karte</li>
+        <li>Handgeschriebene Grußkarte optional</li>
+        <li>3D-Siegel mit Firmenfarbe (AMS-Druck)</li>
+        <li>Einzelversand an Empfänger möglich</li>
+        <li>Terminlieferung garantiert</li>
+      </ul>
+      <div class="pkg-price">
+        <span class="pkg-from">Ab</span>
+        <span class="pkg-amount">82</span>
+        <span class="pkg-unit">€ / Box</span>
+      </div>
+      <div class="pkg-note">~8% Mengenrabatt · Botanica ab 54€</div>
+      <a class="pkg-cta" href="#contact">
+        Anfragen
+        <span style="display:flex;align-items:center;">
+          <span class="pkg-cta-l"></span>
+          <span class="pkg-cta-a"></span>
+        </span>
+      </a>
+    </div>
+
+    <!-- PRESTIGE -->
+    <div class="pkg rev d3">
+      <div class="pkg-num">03</div>
+      <div class="pkg-name">Prestige</div>
+      <div class="pkg-boxes">50+ Boxen</div>
+      <div class="pkg-divider"></div>
+      <ul class="pkg-items">
+        <li>Vollständig individualisiertes Sortiment</li>
+        <li>Eigene Firmen-Story-Karte (Design inklusive)</li>
+        <li>3D-Einleger in Firmenfarbe</li>
+        <li>Jahresvertrag mit festen Konditionen</li>
+        <li>Persönlicher Account Manager</li>
+        <li>Weihnachts- & Event-Lieferplanung</li>
+      </ul>
+      <div class="pkg-price">
+        <span class="pkg-from">Ab</span>
+        <span class="pkg-amount">75</span>
+        <span class="pkg-unit">€ / Box</span>
+      </div>
+      <div class="pkg-note">~15% Mengenrabatt · Auf Anfrage</div>
+      <a class="pkg-cta" href="#contact">
+        Anfragen
+        <span style="display:flex;align-items:center;">
+          <span class="pkg-cta-l"></span>
+          <span class="pkg-cta-a"></span>
+        </span>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Custom -->
+  <div class="pkg-custom rev d4">
+    <div class="pkg-custom-text">
+      <h3>Etwas Individuelles?</h3>
+      <p>Saisonale Editionen, gemischte Sortimente, Eventgeschenke, Mitarbeiter-Präsente – wir schnüren jedes Paket das du brauchst. Kein Aufwand zu groß, keine Idee zu ungewöhnlich.</p>
+    </div>
+    <a class="hero-cta" href="#contact">
+      Individuell anfragen
+      <span style="display:flex;align-items:center;">
+        <span class="cta-l"></span>
+        <span class="cta-a"></span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="process-inner">
+    <div class="section-header rev">
+      <span class="section-eyebrow">So funktioniert es</span>
+      <h2 class="section-title">Von der Anfrage<br><em>zur Lieferung</em></h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step rev d1">
+        <div class="step-num">01</div>
+        <div class="step-title">Anfrage</div>
+        <p class="step-body">Du schickst uns eine kurze Anfrage – Anzahl, Anlass, gewünschte Linie. Kein langer Prozess, keine Formularpflicht.</p>
+      </div>
+      <div class="process-step rev d2">
+        <div class="step-num">02</div>
+        <div class="step-title">Angebot</div>
+        <p class="step-body">Wir schicken dir innerhalb von 24 Stunden ein konkretes Angebot. Mit Preisen, Lieferzeitplan und Individualisierungsoptionen.</p>
+      </div>
+      <div class="process-step rev d3">
+        <div class="step-num">03</div>
+        <div class="step-title">Produktion</div>
+        <p class="step-body">Wir kuratieren, verpacken und personalisieren jede Box. Story-Karte, 3D-Siegel, Firmenbranding – alles in einer Hand.</p>
+      </div>
+      <div class="process-step rev d4">
+        <div class="step-num">04</div>
+        <div class="step-title">Lieferung</div>
+        <p class="step-body">Termingerechte Lieferung – gesammelt an euch oder einzeln direkt an die Empfänger. Rechnung 30 Tage netto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why">
+  <div class="section-header rev">
+    <span class="section-eyebrow">Warum Kaia Selects</span>
+    <h2 class="section-title">Kein Standard.<br><em>Kein Kompromiss.</em></h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-item rev d1">
+      <div class="why-icon">
+        <svg width="14" height="14" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="5" fill="#c9a96e" opacity="0.8"/>
+          <ellipse cx="24" cy="10" rx="2.5" ry="7" fill="#c9a96e" opacity="0.45"/>
+          <ellipse cx="24" cy="38" rx="2.5" ry="7" fill="#c9a96e" opacity="0.45"/>
+          <ellipse cx="10" cy="24" rx="7" ry="2.5" fill="#c9a96e" opacity="0.45"/>
+          <ellipse cx="38" cy="24" rx="7" ry="2.5" fill="#c9a96e" opacity="0.45"/>
+          <circle cx="24" cy="24" r="2" fill="#080806"/>
+        </svg>
+      </div>
+      <div class="why-title">Kein Abo. Keine Bindung.</div>
+      <p class="why-body">Ihr bestellt wenn ihr möchtet – zur Weihnachtssaison, zum Firmenjubiläum, zum Kundenmeeting. Kein monatlicher Abzug, keine Mindestlaufzeit, keine versteckten Kosten.</p>
+    </div>
+    <div class="why-item rev d2">
+      <div class="why-icon">
+        <svg width="14" height="14" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="5" fill="#c9a96e" opacity="0.8"/>
+          <ellipse cx="24" cy="10" rx="2.5" ry="7" fill="#c9a96e" opacity="0.45"/>
+          <ellipse cx="24" cy="38" rx="2.5" ry="7" fill="#c9a96e" opacity="0.45"/>
+          <ellipse cx="10" cy="24" rx="7" ry="2.5" fill="#c9a96e" opacity="0.45"/>
+          <ellipse cx="38" cy="24" rx="7" ry="2.5" fill="#c9a96e" opacity="0.45"/>
+          <circle cx="24" cy="24" r="2" fill="#080806"/>
+        </svg>
+      </div>
+      <div class="why-title">Alkoholfrei inklusive.</div>
+      <p class="why-body">Unsere Botanica-Linie macht Corporate Gifting inklusiv. Kein Mitarbeiter, kein Kunde fühlt sich ausgeschlossen – bei gleichem Premium-Anspruch.</p>
+    </div>
+    <div class="why-item rev d3">
+      <div class="why-icon">
+        <svg width="14" height="14" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="5" fill="#c9a96e" opacity="0.8"/>
+          <ellipse cx="24" cy="10" rx="2.5" ry="7" fill="#c9a96e" opacity="0.45"/>
+          <ellipse cx="24" cy="38" rx="2.5" ry="7" fill="#c9a96e" opacity="0.45"/>
+          <ellipse cx="10" cy="24" rx="7" ry="2.5" fill="#c9a96e" opacity="0.45"/>
+          <ellipse cx="38" cy="24" rx="7" ry="2.5" fill="#c9a96e" opacity="0.45"/>
+          <circle cx="24" cy="24" r="2" fill="#080806"/>
+        </svg>
+      </div>
+      <div class="why-title">Eine Geschichte pro Box.</div>
+      <p class="why-body">Jedes Produkt wurde persönlich in Südafrika ausgewählt. Die Story-Karte erzählt warum. Das ist der Unterschied zwischen einem Geschenk das man behält – und einem das man vergisst.</p>
+    </div>
+    <div class="why-item rev d4">
+      <div class="why-icon">
+        <svg width="14" height="14" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="5" fill="#c9a96e" opacity="0.8"/>
+          <ellipse cx="24" cy="10" rx="2.5" ry="7" fill="#c9a96e" opacity="0.45"/>
+          <ellipse cx="24" cy="38" rx="2.5" ry="7" fill="#c9a96e" opacity="0.45"/>
+          <ellipse cx="10" cy="24" rx="7" ry="2.5" fill="#c9a96e" opacity="0.45"/>
+          <ellipse cx="38" cy="24" rx="7" ry="2.5" fill="#c9a96e" opacity="0.45"/>
+          <circle cx="24" cy="24" r="2" fill="#080806"/>
+        </svg>
+      </div>
+      <div class="why-title">Handgefertigt bis ins Detail.</div>
+      <p class="why-body">3D-gedruckte Einleger, Wonki Ware Keramik aus dem Garden Route, Wachssiegel – jede Box entsteht mit Sorgfalt. Das merkt man beim Öffnen.</p>
+    </div>
+    <div class="why-item rev d5">
+      <div class="why-icon">
+        <svg width="14" height="14" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="5" fill="#c9a96e" opacity="0.8"/>
+          <ellipse cx="24" cy="10" rx="2.5" ry="7" fill="#c9a96e" opacity="0.45"/>
+          <ellipse cx="24" cy="38" rx="2.5" ry="7" fill="#c9a96e" opacity="0.45"/>
+          <ellipse cx="10" cy="24" rx="7" ry="2.5" fill="#c9a96e" opacity="0.45"/>
+          <ellipse cx="38" cy="24" rx="7" ry="2.5" fill="#c9a96e" opacity="0.45"/>
+          <circle cx="24" cy="24" r="2" fill="#080806"/>
+        </svg>
+      </div>
+      <div class="why-title">Individualisierung inklusive.</div>
+      <p class="why-body">Euer Firmenlogo auf der Story-Karte, 3D-Siegel in eurer Farbe, individuelle Grußtexte – ohne Aufpreis ab Premium-Paket.</p>
+    </div>
+    <div class="why-item rev d5">
+      <div class="why-icon">
+        <svg width="14" height="14" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="5" fill="#c9a96e" opacity="0.8"/>
+          <ellipse cx="24" cy="10" rx="2.5" ry="7" fill="#c9a96e" opacity="0.45"/>
+          <ellipse cx="24" cy="38" rx="2.5" ry="7" fill="#c9a96e" opacity="0.45"/>
+          <ellipse cx="10" cy="24" rx="7" ry="2.5" fill="#c9a96e" opacity="0.45"/>
+          <ellipse cx="38" cy="24" rx="7" ry="2.5" fill="#c9a96e" opacity="0.45"/>
+          <circle cx="24" cy="24" r="2" fill="#080806"/>
+        </svg>
+      </div>
+      <div class="why-title">Rechnung 30 Tage netto.</div>
+      <p class="why-body">Kein Vorauskasse-Stress. Ihr erhaltet eine ordentliche Rechnung nach Lieferung – passend für jede Buchhaltung und steuerlich absetzbar als Betriebsausgabe.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner rev">
+    <div id="contact-form">
+      <span class="section-eyebrow">Angebot anfragen</span>
+      <h2 class="contact-title">Lass uns<br><em>sprechen</em></h2>
+      <div class="contact-rule"></div>
+      <p class="contact-sub">Kein langes Formular. Kein Vertriebsgespräch.<br>Einfach kurz schreiben – wir melden uns innerhalb von 24 Stunden.</p>
+
+      <div class="form-row" style="margin-bottom:4px;">
+        <input type="text" class="form-field" id="f-company" placeholder="Firmenname">
+        <input type="text" class="form-field" id="f-name" placeholder="Dein Name">
+      </div>
+      <input type="email" class="form-field" id="f-email" placeholder="E-Mail Adresse" style="margin-bottom:4px;">
+
+      <select class="form-field" id="f-pkg" style="margin-bottom:4px;">
+        <option value="" disabled selected>Paket wählen</option>
+        <option value="starter">Starter · 10–24 Boxen</option>
+        <option value="premium">Premium · 25–49 Boxen</option>
+        <option value="prestige">Prestige · 50+ Boxen</option>
+        <option value="custom">Individuell / Sonstiges</option>
+      </select>
+
+      <select class="form-field" id="f-line" style="margin-bottom:4px;">
+        <option value="" disabled selected>Produktlinie</option>
+        <option value="reserve">Reserve (Wein)</option>
+        <option value="botanica">Botanica (alkoholfrei)</option>
+        <option value="mix">Kombination beider Linien</option>
+      </select>
+
+      <input type="text" class="form-field" id="f-occasion" placeholder="Anlass (optional – z.B. Weihnachten, Kundengeschenk)">
+
+      <button class="btn-send" onclick="submitForm()">
+        Anfrage senden <span class="btn-l"></span>
+      </button>
+      <p class="form-note">Kein Abo · Keine Bindung · Antwort innerhalb 24h</p>
+    </div>
+
+    <div class="success-msg" id="contact-success">
+      <div style="width:48px;height:48px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 28px;">
+        <svg width="20" height="20" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="5" fill="#c9a96e" opacity="0.9"/>
+          <ellipse cx="24" cy="10" rx="2.8" ry="7" fill="#c9a96e" opacity="0.5"/>
+          <ellipse cx="24" cy="38" rx="2.8" ry="7" fill="#c9a96e" opacity="0.5"/>
+          <ellipse cx="10" cy="24" rx="7" ry="2.8" fill="#c9a96e" opacity="0.5"/>
+          <ellipse cx="38" cy="24" rx="7" ry="2.8" fill="#c9a96e" opacity="0.5"/>
+          <circle cx="24" cy="24" r="2.5" fill="#080806"/>
+        </svg>
+      </div>
+      <div class="success-head">Danke.</div>
+      <p class="success-body">Deine Anfrage ist bei uns.<br>Wir melden uns innerhalb von 24 Stunden<br>mit einem konkreten Angebot.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="f-brand">Kaia Selects</span>
+  <div class="f-links">
+    <a href="KaiaSelects_LandingPage.html">Privatkunden</a>
+    <a href="#">Impressum</a>
+    <a href="mailto:hello@kaiaselects.de">hello@kaiaselects.de</a>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.rev').forEach(el => io.observe(el));
+
+  function submitForm() {
+    const email = document.getElementById('f-email').value;
+    if(!email || !email.includes('@')) {
+      document.getElementById('f-email').style.borderColor='#8a2a18';
+      document.getElementById('f-email').focus();
+      return;
+    }
+    const f = document.getElementById('contact-form');
+    f.style.transition='all 0.5s ease';
+    f.style.opacity='0'; f.style.transform='translateY(-20px)';
+    setTimeout(() => {
+      f.style.display='none';
+      document.getElementById('contact-success').classList.add('show');
+    }, 500);
+  }
+</script>
+</body>
+</html>
