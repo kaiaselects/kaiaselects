@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaia Selects · Bald geöffnet</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;1,300&family=Jost:wght@200;300&display=swap" rel="stylesheet">
+<style>
+  :root { --gold:#c9a96e; --gold-light:#f0cc7a; --gold-pale:#f0e8d8; --dark:#080806; --muted:#9a9a82; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: radial-gradient(ellipse 60% 60% at 50% 42%, #1c1f16 0%, #12140d 55%, #080806 100%);
+    color: var(--gold-pale); font-family:'Jost',sans-serif; font-weight:200;
+    min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; padding:32px;
+  }
+  .wrap { max-width:520px; animation: fade 1.4s ease both; }
+  @keyframes fade { from {opacity:0; transform:translateY(12px);} to {opacity:1; transform:none;} }
+  .badge { width:120px; height:120px; margin:0 auto 36px; }
+  .eyebrow { font-size:9px; letter-spacing:0.6em; color:var(--muted); text-transform:uppercase; margin-bottom:24px; }
+  .word { font-family:'Cormorant Garamond',serif; font-weight:200; font-size:clamp(36px,7vw,60px); letter-spacing:0.18em; color:var(--gold-pale); }
+  .rule { width:54px; height:1px; background:var(--gold); opacity:0.6; margin:28px auto; }
+  .line { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(20px,4vw,26px); color:var(--gold); }
+  .sub { font-size:12px; letter-spacing:0.05em; color:var(--muted); margin-top:32px; line-height:1.8; }
+  .sub a { color:var(--gold); text-decoration:none; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <svg class="badge" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
+      <g fill="#c9a96e" opacity="0.45">
+        <ellipse cx="540" cy="270" rx="46" ry="120" transform="rotate(45 540 540)"/>
+        <ellipse cx="540" cy="270" rx="46" ry="120" transform="rotate(135 540 540)"/>
+        <ellipse cx="540" cy="270" rx="46" ry="120" transform="rotate(225 540 540)"/>
+        <ellipse cx="540" cy="270" rx="46" ry="120" transform="rotate(315 540 540)"/>
+      </g>
+      <g fill="#c9a96e" opacity="0.9">
+        <ellipse cx="540" cy="240" rx="58" ry="150"/>
+        <ellipse cx="540" cy="240" rx="58" ry="150" transform="rotate(90 540 540)"/>
+        <ellipse cx="540" cy="240" rx="58" ry="150" transform="rotate(180 540 540)"/>
+        <ellipse cx="540" cy="240" rx="58" ry="150" transform="rotate(270 540 540)"/>
+      </g>
+      <circle cx="540" cy="540" r="104" fill="#f0cc7a"/>
+      <circle cx="540" cy="540" r="50" fill="#080806"/>
+      <circle cx="540" cy="540" r="22" fill="#c9a96e" opacity="0.85"/>
+    </svg>
+    <p class="eyebrow">Südafrika · Handverlesen</p>
+    <h1 class="word">KAIA SELECTS</h1>
+    <div class="rule"></div>
+    <p class="line">Bald geöffnet.</p>
+    <p class="sub">Wir bereiten etwas Besonderes vor.<br><a href="mailto:info@kaiaselects.de">info@kaiaselects.de</a></p>
+  </div>
+</body>
+</html>
